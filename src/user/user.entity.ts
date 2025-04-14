@@ -1,21 +1,25 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  PrimaryColumn,
 } from 'typeorm';
+import { v4 as uuidv4 } from 'uuid';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn({ type: 'uuid' })
+  id: string = uuidv4();
 
-  @Column({ unique: true })
+  @Column({ unique: true, type: 'varchar', length: 50 })
   email: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100 })
   password: string;
+
+  @Column({ type: 'varchar', length: 100 })
+  firstName: string;
 
   @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
