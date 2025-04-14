@@ -11,7 +11,8 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     DatabaseModule,
-    UserModule],
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
